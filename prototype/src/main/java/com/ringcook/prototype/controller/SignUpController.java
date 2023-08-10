@@ -1,8 +1,10 @@
-package com.ringcook.prototype;
+package com.ringcook.prototype.controller;
 
+import com.ringcook.prototype.user.SignUpRepository;
+import com.ringcook.prototype.user.user_info;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,4 +26,11 @@ public class SignUpController {
         user.setU_local(map.get("local"));
         signUpRepository.save(user);
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login_form";
+    }
 }
+
+

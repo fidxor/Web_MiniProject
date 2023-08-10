@@ -1,4 +1,4 @@
-package com.ringcook.prototype;
+package com.ringcook.prototype.user;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,7 +14,7 @@ public class user_info {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer u_num;
 
-    @Column(length = 255)
+    @Column(length = 255, unique = true)
     private String u_id;
 
     private String u_pw;

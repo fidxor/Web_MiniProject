@@ -1,5 +1,7 @@
 package com.ringcook.prototype;
 
+import com.ringcook.prototype.user.SignUpRepository;
+import com.ringcook.prototype.user.user_info;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
