@@ -20,12 +20,12 @@ function Login() {
 
   return (
     <>
-    <form onSubmit={submitInfo}>
-        <label>id</label>
-        <input id='id' value={id} onChange={(e) => setId(e.target.value)} />
-        <label id='pw'>pw</label>
-        <input type='password' value={pw} onChange={(e) => setPwd(e.target.value)} />
-    </form>
+        <form onSubmit={submitInfo}>
+            <label>id</label>
+            <input id='id' value={id} onChange={(e) => setId(e.target.value)} />
+            <label id='pw'>pw</label>
+            <input type='password' value={pw} onChange={(e) => setPwd(e.target.value)} />
+        </form>
     </>
   )
 }

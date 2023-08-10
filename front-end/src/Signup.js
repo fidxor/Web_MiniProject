@@ -109,7 +109,11 @@ function Signup(){
           <p className="message">{passwordConfirmMessage}</p>
         </div>
         <div className="form-el">
+<<<<<<< HEAD
+          <label htmlFor="addr">Address</label> <br />
+=======
           <label htmlFor="Addr">Address</label> <br />
+>>>>>>> main
           <input
             id="addr"
             name="addr"
@@ -125,7 +129,11 @@ function Signup(){
     </>
   );
 }
+<<<<<<< HEAD
+  export default Signup;
+=======
   export default Signup;
 
 
 // git merge 테스트
+>>>>>>> main
