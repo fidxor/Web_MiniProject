@@ -6,7 +6,7 @@ import Signup from './Signup';
 function App() {
   return (
     <>
-      <Login></Login>
+      {/* <Login></Login> */}
       <Signup></Signup>
     </>
   );
