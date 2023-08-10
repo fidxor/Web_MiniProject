@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootTest
-public class RepositoryTest {
+public class UserRepositoryTest {
 
     @Autowired
     private SignUpRepository signUpRepository;
