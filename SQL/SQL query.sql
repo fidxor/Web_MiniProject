@@ -36,6 +36,10 @@ RENAME TABLE shopping TO recipe;
 ALTER TABLE recipe DROP COLUMN s_market;
 ALTER TABLE recipe DROP COLUMN s_price;
 
+ALTER TABLE recipe CHANGE COLUMN r_id r_num INT;
+ALTER TABLE recipe ADD COLUMN s_price INT;
+ALTER TABLE recipe CHANGE COLUMN s_price r_id INT;
+
 describe recipe;
 
 create table board(b_id int NOT NULL,
@@ -43,6 +47,11 @@ create table board(b_id int NOT NULL,
                    b_p_id varchar(255),
                    PRIMARY KEY (b_id)
                    );
+
+ALTER TABLE board ADD COLUMN b_cookname VARCHAR(255);
+ALTER TABLE board CHANGE COLUMN b_cookname b_tage INT;
+ALTER TABLE board CHANGE COLUMN b_tage b_tage VARCHAR(255);
+ALTER TABLE board DROP COLUMN b_p_id;
 
 create table category(c_id int NOT NULL,
 					  c_top varchar(255),
