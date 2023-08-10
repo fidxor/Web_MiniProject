@@ -10,10 +10,14 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http)throws Exception {
-        http.authorizeHttpRequests().antMatchers("/**").permitAll()
-                .and().formLogin().loginPage("/user/login").defaultSuccessUrl("/")
-                .and().logout().logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+                .antMatchers("/board/**").permitAll()
+                .antMatchers("/**").permitAll()
+                .and()
+                .formLogin().loginPage("/user/login").defaultSuccessUrl("/")
+                .and()
+                .logout().logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
                 .logoutSuccessUrl("/").invalidateHttpSession(true);
         return http.build();
     }
