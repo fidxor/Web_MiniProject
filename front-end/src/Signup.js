@@ -145,7 +145,7 @@ function Signup(){
         </div>
         <div className="form-el">
           <label htmlFor="password">Password</label> <br />
-          <input
+          <input type='password'
             id="password"
             name="password"
             value={password}
@@ -156,6 +156,7 @@ function Signup(){
         <div className="form-el">
           <label htmlFor="passwordConfirm">Password Confirm</label> <br />
           <input
+            type='password'
             id="passwordConfirm"
             name="passwordConfirm"
             value={passwordConfirm}
