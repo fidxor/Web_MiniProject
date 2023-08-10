@@ -115,10 +115,19 @@ function Signup(){
   const addHyphen = (e) => {
     const currentNumber = e.target.value;
     setPhone(currentNumber);
-    if (currentNumber.length == 3 || currentNumber.length == 8) {
+    const checkForHypen = (text) => {
+      return text.includes("-");
+    }
+    const hasHypen = checkForHypen(currentNumber)
+    console.log(hasHypen)
+    if (currentNumber.length === 3 || currentNumber.length === 8) {
       setPhone(currentNumber + "-");
       onChangePhone(currentNumber + "-");
-    } else {
+    } else if ((hasHypen === true && currentNumber.length === 9) || (hasHypen === true && currentNumber.length === 4)) {
+      setPhone("");
+      onChangePhone("");
+    }
+    else {
       onChangePhone(currentNumber);
     }
   };
