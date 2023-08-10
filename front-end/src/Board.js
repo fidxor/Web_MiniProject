@@ -20,9 +20,28 @@ function Board() {
 
     return (
         <div>
-            <div>
-                <Link></Link>
-            </div>
+            <table className="table text-center my-3">
+                <thead className="table-dark">
+                    <tr>
+                        <th>번호</th>
+                        <th>제목</th>
+                        <th>작성일시</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {getMainBoardList.map((mainboard, index) => {
+                        return (
+                            <tr key={index}>
+                                <td>{index+1}</td>
+                                <td>
+                                    <Link to={`/board/${mainboard.bnum}`}>{mainboard.body}</Link>
+                                </td>
+                                <td>{mainboard.creat_time}</td>
+                            </tr>
+                        )
+                    })}
+                </tbody>
+            </table>
         </div>
     )
 }

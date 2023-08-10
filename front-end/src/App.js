@@ -1,12 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
-// import Login from './Login';
-import Signup from './Signup';
+import Login from './Login';
+import SignUp from './Signup';
+import WishList from './WishList';
+import { Route, Routes, Link, BrowserRouter} from 'react-router-dom';
 
 function App() {
   return (
-    // <Login></Login>
-    <Signup></Signup>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Login/>}/>
+      <Route path='/signup' element={<SignUp/>}/>
+      <Route path='/wishlist' element={<WishList/>}/>
+    </Routes>
+    </BrowserRouter>
+    
   );
 }
 
