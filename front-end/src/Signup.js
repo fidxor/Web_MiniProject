@@ -6,30 +6,21 @@ import React from "react";
 function Signup(){
   // 초기값 세팅 - 아이디, 닉네임, 비밀번호, 비밀번호확인, 이메일, 전화번호, 생년월일
   const [id, setId] = useState("");
-  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [birth, setBirth] = useState("");
+  const [addr, setAddr] = useState("");
 
   // 오류메세지 상태 저장
   const [idMessage, setIdMessage] = useState("");
-  const [nameMessage, setNameMessage] = useState("");
   const [passwordMessage, setPasswordMessage] = useState("");
   const [passwordConfirmMessage, setPasswordConfirmMessage] = useState("");
-  const [emailMessage, setEmailMessage] = useState("");
-  const [phoneMessage, setPhoneMessage] = useState("");
-  const [birthMessage, setBirthMessage] = useState("");
+  const [addrMessage, setAddrMessage] = useState("");
 
   // 유효성 검사
   const [isId, setIsId] = useState(false);
-  const [isname, setIsName] = useState(false);
   const [isPassword, setIsPassword] = useState(false);
   const [isPasswordConfirm, setIsPasswordConfirm] = useState(false);
-  const [isEmail, setIsEmail] = useState(false);
-  const [isPhone, setIsPhone] = useState(false);
-  const [isBirth, setIsBirth] = useState(false);
+  const [isAddr, setIsAddr] = useState(false);
 
   const onChangeId = (e) => {
     const currentId = e.target.value;
@@ -42,19 +33,6 @@ function Signup(){
     } else {
       setIdMessage("사용가능한 아이디 입니다.");
       setIsId(true);
-    }
-  };
-
-  const onChangeName = (e) => {
-    const currentName = e.target.value;
-    setName(currentName);
-
-    if (currentName.length < 2 || currentName.length > 5) {
-      setNameMessage("닉네임은 2글자 이상 5글자 이하로 입력해주세요.");
-      setIsName(false);
-    } else {
-      setNameMessage("사용가능한 닉네임 입니다.");
-      setIsName(true);
     }
   };
 
@@ -84,49 +62,21 @@ function Signup(){
       setIsPasswordConfirm(true);
     }
   };
-  const onChangeEmail = (e) => {
-    const currentEmail = e.target.value;
-    setEmail(currentEmail);
-    const emailRegExp =
-      /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
 
-    if (!emailRegExp.test(currentEmail)) {
-      setEmailMessage("이메일의 형식이 올바르지 않습니다.");
-      setIsEmail(false);
-    } else {
-      setEmailMessage("사용 가능한 이메일 입니다.");
-      setIsEmail(true);
-    }
-  };
-  const onChangePhone = (getNumber) => {
-    const currentPhone = getNumber;
-    setPhone(currentPhone);
-    const phoneRegExp = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
-
-    if (!phoneRegExp.test(currentPhone)) {
-      setPhoneMessage("올바른 형식이 아닙니다.");
-      setIsPhone(false);
-    } else {
-      setPhoneMessage("사용 가능한 번호입니다:-)");
-      setIsPhone(true);
-    }
+  const onChangeAddr = (e) => {
+    const currentAddr = e.target.value;
+    setAddr(currentAddr);
+    // if(){
+    //   setAddrMessage('올바른 주소를 입력해주세요')
+    // }
+    // else(){
+    //   setIsAddr(true)
+    // }
+    
+    // 조건 정해지면 바꾸기
+    setIsAddr(true)
   };
 
-  const addHyphen = (e) => {
-    const currentNumber = e.target.value;
-    setPhone(currentNumber);
-    if (currentNumber.length == 3 || currentNumber.length == 8) {
-      setPhone(currentNumber + "-");
-      onChangePhone(currentNumber + "-");
-    } else {
-      onChangePhone(currentNumber);
-    }
-  };
-
-  const onChangeBirth = (e) => {
-    const currentBirth = e.target.value;
-    setBirth(currentBirth);
-  };
 
   return (
     <>
@@ -137,15 +87,9 @@ function Signup(){
           <input id="id" name="id" value={id} onChange={onChangeId} />
           <p className="message"> {idMessage} </p>
         </div>
-
-        <div className="form-el">
-          <label htmlFor="name">Nick Name</label> <br />
-          <input id="name" name="name" value={name} onChange={onChangeName} />
-          <p className="message">{nameMessage}</p>
-        </div>
         <div className="form-el">
           <label htmlFor="password">Password</label> <br />
-          <input
+          <input type='password'
             id="password"
             name="password"
             value={password}
@@ -156,6 +100,7 @@ function Signup(){
         <div className="form-el">
           <label htmlFor="passwordConfirm">Password Confirm</label> <br />
           <input
+            type='password'
             id="passwordConfirm"
             name="passwordConfirm"
             value={passwordConfirm}
@@ -164,29 +109,14 @@ function Signup(){
           <p className="message">{passwordConfirmMessage}</p>
         </div>
         <div className="form-el">
-          <label htmlFor="email">Email</label> <br />
+          <label htmlFor="Addr">Address</label> <br />
           <input
-            id="email"
-            name="name"
-            value={email}
-            onChange={onChangeEmail}
+            id="addr"
+            name="addr"
+            value={addr}
+            onChange={onChangeAddr}
           />
-          <p className="message">{emailMessage}</p>
-        </div>
-        <div className="form-el">
-          <label htmlFor="phone">Phone</label> <br />
-          <input id="phone" name="phone" value={phone} onChange={addHyphen} />
-          <p className="message">{phoneMessage}</p>
-        </div>
-        <div className="form-el">
-          <label htmlFor="birth">Birth</label> <br />
-          <input
-            id="birth"
-            name="birth"
-            value={birth}
-            onChange={onChangeBirth}
-          />
-          <p className="message">{birthMessage}</p>
+          <p className="message">{addrMessage}</p>
         </div>
         <br />
         <br />
