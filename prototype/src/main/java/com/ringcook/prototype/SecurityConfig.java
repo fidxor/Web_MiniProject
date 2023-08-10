@@ -11,11 +11,11 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.authorizeHttpRequests()
                 .antMatchers("/board/**").permitAll()
                 .antMatchers("/**").permitAll()
                 .and()
-                .formLogin().loginPage("/user/login").defaultSuccessUrl("/")
+                .formLogin().loginPage("/user/login").defaultSuccessUrl("/board")
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
                 .logoutSuccessUrl("/").invalidateHttpSession(true);
