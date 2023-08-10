@@ -4,6 +4,7 @@ import com.ringcook.prototype.user.SignUpRepository;
 import com.ringcook.prototype.user.user_info;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Service
 public class UserService {
@@ -14,12 +15,18 @@ public class UserService {
         this.signUpRepository = signUpRepository;
     }
 
-    public SignUp creat(String username, String password) {
+    public user_info creat(String userid, String password, String userlocal) {
         user_info user = new user_info();
-        user.setU_id(userid);
+        user.setId(userid);
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        user.setU_pw(passwordEncoder.encode(userpw);
-        user.setU_local(userlocal);
-        signUpRepository.save(user);
+        user.setPw(passwordEncoder.encode(password));
+        user.setAddress(userlocal);
+        this.signUpRepository.save(user);
+        return user;
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login_form";
     }
 }

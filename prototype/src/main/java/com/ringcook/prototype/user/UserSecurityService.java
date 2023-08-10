@@ -19,8 +19,8 @@ public class UserSecurityService implements UserDetailsService {
     private final SignUpRepository signUpRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<user_info> _singUp = this.signUpRepository.findByUsername(username);
+    public UserDetails loadUserByUsername(String userid) throws UsernameNotFoundException {
+        Optional<user_info> _singUp = this.signUpRepository.findById(userid);
         if (_singUp.isEmpty()) {
             throw new UsernameNotFoundException("사용자를 찾을 수 없습니다.");
         }
@@ -28,6 +28,6 @@ public class UserSecurityService implements UserDetailsService {
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority((UserRole.USER.getValue())));
         //User만 로그인하는 페이지로 생각해서 권한을 user로만 주었습니다.
-        return new User(signUp.getU_id(), signUp.getU_pw(), authorities);
+        return new User(signUp.getId(), signUp.getPw(), authorities);
     }
 }
