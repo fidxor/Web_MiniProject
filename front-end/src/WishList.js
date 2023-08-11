@@ -21,14 +21,23 @@ function WishList() {
           price : 3500,
         },
     ]
-    
+
+    let totalPrice = 0
+    for(let i = 0; i < items.length; i++){
+      totalPrice = totalPrice + items[i].price
+    }
+
     return (
       <>
       <h1>여기가 장바구니</h1>
+
       <div>
           {items.map(item => (
               <WishListItem key={item.id} item={item} />
           ))}
+      </div>
+      <div>
+        총 금액 : {totalPrice}
       </div>
       </>
   );
