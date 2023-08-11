@@ -12,12 +12,12 @@ public class user_info {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer u_num;
+    private Integer num;
 
     @Column(length = 255, unique = true)
-    private String u_id;
+    private String id;
 
-    private String u_pw;
+    private String pw;
 
-    private String u_local;
+    private String address;
 }

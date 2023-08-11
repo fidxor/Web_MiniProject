@@ -20,16 +20,11 @@ public class SignUpController {
     {
         user_info user = new user_info();
 
-        user.setU_id(map.get("id"));
+        user.setId(map.get("id"));
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        user.setU_pw(passwordEncoder.encode(map.get("pw")));
-        user.setU_local(map.get("local"));
+        user.setPw(passwordEncoder.encode(map.get("pw")));
+        user.setAddress(map.get("local"));
         signUpRepository.save(user);
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login_form";
     }
 }
 

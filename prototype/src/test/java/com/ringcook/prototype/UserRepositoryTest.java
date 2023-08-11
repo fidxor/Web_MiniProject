@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootTest
-public class RepositoryTest {
+public class UserRepositoryTest {
 
     @Autowired
     private SignUpRepository signUpRepository;
@@ -17,10 +17,11 @@ public class RepositoryTest {
     void testJpa_1()
     {
         user_info user = new user_info();
-        user.setU_id("user1");
+        user.setId("user3");
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        user.setU_pw(passwordEncoder.encode("user2user2"));
-        user.setU_local("서울시 강북구");
+        user.setPw(passwordEncoder.encode("user3user3"));
+        user.setAddress("서울시 금천구");
         this.signUpRepository.save(user);
     }
+
 }
