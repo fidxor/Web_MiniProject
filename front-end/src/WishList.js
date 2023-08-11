@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import WishListItem from './WishListItem';
 
 function WishList() {
@@ -21,16 +21,47 @@ function WishList() {
           price : 3500,
         },
     ]
-    
-    return (
-      <>
+
+  const [isChecked, setIsChecked] = useState(
+    items.map((item) => ({ id: item.id, checked: false }))
+  );
+
+  const totalPrice = items.reduce((sum, item) => {
+    if (isChecked.find((checkedItem) => checkedItem.id === item.id)?.checked) {
+      return sum + item.price;
+    } else {
+      return sum;
+    }
+  }, 0);
+
+  const handleCheckboxChange = (itemId) => {
+    setIsChecked((prevChecked) =>
+      prevChecked.map((item) =>
+        item.id === itemId ? { ...item, checked: !item.checked } : item
+      )
+    );
+  };
+
+  return (
+    <>
       <h1>여기가 장바구니</h1>
       <div>
-          {items.map(item => (
-              <WishListItem key={item.id} item={item} />
-          ))}
+        {items.map((item) => (
+          <div key={item.id}>
+            <WishListItem item={item} />
+            <input
+              type="checkbox"
+              id={item.id}
+              checked={isChecked.find((checkedItem) => checkedItem.id === item.id)?.checked || false}
+              onChange={() => handleCheckboxChange(item.id)}
+            />
+          </div>
+        ))}
       </div>
-      </>
+      <div>
+        총 금액 : {totalPrice}
+      </div>
+    </>
   );
 }
 
