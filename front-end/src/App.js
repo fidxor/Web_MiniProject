@@ -21,10 +21,23 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />}/>
                 <Route path="/board" element={<Board />}/>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> jinlee
                 <Route path="/board/:id" element={<BoardDetail />}/>
                 <Route path="/MainBoard-create" element={<BoardCreate />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/signup" element={<Signup />} />
+<<<<<<< HEAD
+=======
+=======
+                <Route path="/board/:bnum" element={<BoardDetail />}/>
+                <Route path="/main-board-create" element={<BoardCreate />} />
+                <Route path="/Signup" element={<Signup />} />
+                <Route path="/Login" element={<Login />} />
+>>>>>>> 215ff306c7f2f0150b391ce6f3192540112a47db
+>>>>>>> jinlee
               </Routes>
           </div>
       </BrowserRouter>

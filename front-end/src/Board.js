@@ -34,13 +34,13 @@ function Board() {
                                 <td>
                                     <Link
                                         className="text-decoration-none"
-                                        to={`/board/${MainBoard.bnum}`}
+                                        to={`/board/${MainBoard.id}`}
                                         >
-                                        {MainBoard.head}
-                                        <sup className="text-danger ms-2">[{MainBoard.commnetList.length}]</sup>
+                                        {MainBoard.subject}
+                                        <sup className="text-danger ms-2">[{MainBoard.commentlist.length}]</sup>
                                     </Link>
                                 </td>
-                                <td>{MainBoard.creatTime}</td>
+                                <td>{MainBoard.createtime}</td>
                             </tr>
                         )
                     })}

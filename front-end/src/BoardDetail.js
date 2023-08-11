@@ -12,10 +12,10 @@ function BoardDetail() {
     useEffect(() => {
         async function getMainBoard() {
             try {
-                const result = await axios.get(`http://localhost:8080/board/${MainBoard.bnum}`)
+                const result = await axios.get(`http://localhost:8080/board/${MainBoard.id}`)
                 setMainBoard(result.data);
                 console.log(result);
-                setCommnet(result.data.CommnetList);
+                setCommnet(result.data.commentlist);
             } catch (error) {
                 console.log(error);
             }
@@ -31,7 +31,7 @@ function BoardDetail() {
         } else {
             event.preventDefault();
             try {
-                const result = await axios.post(`http://localhost:8080/answer-create/${params.bnum}`,{
+                const result = await axios.post(`http://localhost:8080/answer-create/${params.id}`,{
                     Body: CommnetText
                 })
                 if (result.status === 200) {
@@ -44,10 +44,10 @@ function BoardDetail() {
     }
     return (
         <div>
-            <h2 className="border-bottom py-2">제목 : {MainBoard.head}</h2>
+            <h2 className="border-bottom py-2">제목 : {MainBoard.subject}</h2>
             <div className="card my-3">
                 <div className="card-body">
-                    <div className="card-text" style={{whiteSpace: "pre-line"}}>{MainBoard.body}</div>
+                    <div className="card-text" style={{whiteSpace: "pre-line"}}>{MainBoard.content}</div>
                     <div className="d-flex justify-content-end">
                         <div className="badge bg-light text-dark p-2 text-start">
                             <div>{MainBoard.createTime}</div>

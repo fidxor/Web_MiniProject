@@ -12,26 +12,27 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Table(name = "mainboard")
 public class MainBoard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer BNum;
+    private Integer id;
 
     @Column(length = 255)
-    private String Head;
+    private String subject;
 
     @Column(columnDefinition = "TEXT")
-    private String Body;
+    private String content;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime CreateTime;
+    private LocalDateTime createtime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime modifyTime;
+    private LocalDateTime modifytime;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "mainBoard", cascade = CascadeType.REMOVE)
-    private List<Commnet> commnetList;
+    private List<Comment> commentlist;
 }
 
