@@ -7,7 +7,7 @@ function Board() {
         async function MainBoardList() {
             try {
                 const result = await axios.get("http://localhost:8080/board");
-                // console.log(result.data);
+                console.log(result.data);
                 setMainBoardList(result.data);
             } catch (error) {
                 console.log(error);
@@ -17,7 +17,7 @@ function Board() {
     }, [])
     return(
         <div>
-            <Link className="btn btn-primary" to="/MainBoard-create">게시글등록</Link>
+            <Link className="btn btn-primary" to="/main-board-create">게시글등록</Link>
             <table className="table text-center my-3">
                 <thead className="table-dark">
                     <tr>
@@ -34,13 +34,13 @@ function Board() {
                                 <td>
                                     <Link
                                         className="text-decoration-none"
-                                        to={`/board/${MainBoard.BNum}`}
+                                        to={`/board/${MainBoard.id}`}
                                         >
-                                        {MainBoard.Body}
-                                        <sup className="text-danger ms-2">[{MainBoard.commnetList.length}]</sup>
+                                        {MainBoard.subject}
+                                        <sup className="text-danger ms-2">[{MainBoard.commentlist.length}]</sup>
                                     </Link>
                                 </td>
-                                <td>{MainBoard.createDate}</td>
+                                <td>{MainBoard.createtime}</td>
                             </tr>
                         )
                     })}
