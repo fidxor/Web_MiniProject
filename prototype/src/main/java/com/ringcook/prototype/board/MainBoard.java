@@ -21,11 +21,14 @@ public class MainBoard {
     @Column(length = 255)
     private String Head;
 
-    @Column(length = 255)
+    @Column(columnDefinition = "TEXT")
     private String Body;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime CreatTime;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime modifyTime;
 
     @JsonManagedReference
     @OneToMany(mappedBy = "mainBoard", cascade = CascadeType.REMOVE)
