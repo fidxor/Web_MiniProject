@@ -32,6 +32,6 @@ public class MainBoard {
 
     @JsonManagedReference
     @OneToMany(mappedBy = "mainBoard", cascade = CascadeType.REMOVE)
-    private List<Commnet> commnetList;
+    private List<Comment> commnetList;
 }
 

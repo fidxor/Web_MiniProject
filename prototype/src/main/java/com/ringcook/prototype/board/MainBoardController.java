@@ -30,11 +30,11 @@ public class MainBoardController {
     @GetMapping(value = "/comment-create/{bnum}")
     public void commentSubmit(@PathVariable("bnum") Integer bnum, @RequestBody Map<String, String> map) {
         MainBoard mainBoard = this.mainBoardRepository.getReferenceById(bnum);
-        Commnet commnet = new Commnet();
-        commnet.setBody(map.get("Body"));
-        commnet.setCreatTime(LocalDateTime.now());
-        commnet.setMainBoard(mainBoard);
-        commentRepository.save(commnet);
+        Comment comment = new Comment();
+        comment.setBody(map.get("Body"));
+        comment.setCreatTime(LocalDateTime.now());
+        comment.setMainBoard(mainBoard);
+        commentRepository.save(comment);
     }
 
     @PostMapping(value = "/main-board-create")
