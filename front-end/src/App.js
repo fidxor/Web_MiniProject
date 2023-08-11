@@ -22,7 +22,7 @@ function App() {
                 <Route path="/" element={<Home />}/>
                 <Route path="/board" element={<Board />}/>
                 <Route path="/board/:id" element={<BoardDetail />}/>
-                <Route path="/question-create" element={<BoardCreate />} />
+                <Route path="/MainBoard-create" element={<BoardCreate />} />
               </Routes>
           </div>
       </BrowserRouter>
