@@ -2,20 +2,20 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 function BoardCreate() {
-    const [subject, setSubject] = useState("");
-    const [content, setContent] = useState("");
+    const [Head, setHead] = useState("");
+    const [Body, setBody] = useState("");
     const navigate = useNavigate();
     async function onSubmit(event) {
         event.preventDefault();
-        if (subject ==="" || content ==="") {
-            alert("글 등록하시려면, 제목과 내용을 입력해야 합니다!!")
+        if (Head ==="" || Body ==="") {
+            alert("글 등록하시려면, 제목과 내용은 입력해야 합니다.")
         } else {
-            console.log("제목: "+subject);
-            console.log("내용: "+content);
+            console.log("제목: "+Head);
+            console.log("내용: "+Body);
             try {
-                const result = await axios.post("http://localhost:8080/question-create/", {
-                    subject: subject,
-                    content: content
+                const result = await axios.post("http://localhost:8080/MainBoard-create/", {
+                    Head: Head,
+                    Body: Body
                 })
                 if (result.status === 200) {
                     navigate("/board");
@@ -26,10 +26,10 @@ function BoardCreate() {
         }
     }
     function onChange(event) {
-        if (event.target.name === "subject") {
-            setSubject(event.target.value);
+        if (event.target.name === "Head") {
+            setHead(event.target.value);
         } else if (event.target.name === "content") {
-            setContent(event.target.value);
+            setBody(event.target.value);
         }
     }
     return(
@@ -37,17 +37,17 @@ function BoardCreate() {
             <h5 className="border-bottom pb-2">게시글등록</h5>
             <form onSubmit={onSubmit}>
                 <div className="mb-3">
-                    <label htmlFor="subject" className="form-label">제목</label>
+                    <label htmlFor="Head" className="form-label">제목</label>
                     <input
-                        onChange={onChange} value={subject}
-                        type="text" name="subject" id="subject" className="form-control"
+                        onChange={onChange} value={Head}
+                        type="text" name="Head" id="Head" className="form-control"
                     />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="content" className="form-label">내용</label>
+                    <label htmlFor="Body" className="form-label">내용</label>
                     <textarea
-                        onChange={onChange} value={content}
-                        name="content" id="content" className="form-control" rows="10"></textarea>
+                        onChange={onChange} value={Body}
+                        name="Body" id="Body" className="form-control" rows="10"></textarea>
                 </div>
                 <input type="submit" value="저장하기" className="btn btn-primary" />
             </form>

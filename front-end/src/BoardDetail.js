@@ -2,36 +2,36 @@ import axios from "axios"
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 function BoardDetail() {
-    const [question, setQuestion] = useState([]);
+    const [MainBoard, setMainBoard] = useState([]);
     const params = useParams();
-    const [answer, setAnswer] = useState([]);
-    const [answerText, setAnswerText] = useState([]);
+    const [Commnet, setCommnet] = useState([]);
+    const [CommnetText, setCommnetText] = useState([]);
     const navigate = useNavigate();
     console.log(params.id);
     useEffect(() => {
-        async function getQuestion() {
+        async function getMainBoard() {
             try {
                 const result = await axios.get(`http://localhost:8080/board/${params.id}`)
-                setQuestion(result.data);
+                setMainBoard(result.data);
                 // console.log(result);
-                setAnswer(result.data.answerList);
+                setCommnet(result.data.CommnetList);
             } catch (error) {
                 console.log(error);
             }
         }
-        getQuestion();
+        getMainBoard();
     }, [params.id])
     function onChange(event) {
-        setAnswerText(event.target.value)
+        setCommnetText(event.target.value)
     }
     async function onSubmit(event) {
-        if (answerText === "") {
+        if (CommnetText === "") {
             alert("답변 내용 입력하세요.")
         } else {
             event.preventDefault();
             try {
                 const result = await axios.post(`http://localhost:8080/answer-create/${params.id}`,{
-                    content: answerText
+                    Body: CommnetText
                 })
                 if (result.status === 200) {
                     navigate(0);
@@ -43,26 +43,26 @@ function BoardDetail() {
     }
     return (
         <div>
-            <h2 className="border-bottom py-2">제목 : {question.subject}</h2>
+            <h2 className="border-bottom py-2">제목 : {MainBoard.Head}</h2>
             <div className="card my-3">
                 <div className="card-body">
-                    <div className="card-text" style={{whiteSpace: "pre-line"}}>{question.content}</div>
+                    <div className="card-text" style={{whiteSpace: "pre-line"}}>{MainBoard.Body}</div>
                     <div className="d-flex justify-content-end">
                         <div className="badge bg-light text-dark p-2 text-start">
-                            <div>{question.createDate}</div>
+                            <div>{MainBoard.createDate}</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <h5 className="border-bottom my-3 py-2"> {answer.length}개의 답변</h5>
-            {answer.map((answer, index) => {
+            <h5 className="border-bottom my-3 py-2"> {Commnet.length}개의 답변</h5>
+            {Commnet.map((Commnet, index) => {
                 return (
                     <div className="card my-3" key={index}>
                         <div className="card-body">
-                            <div className="card-text" style={{whiteSpace: "pre-line"}}>{answer.content}</div>
+                            <div className="card-text" style={{whiteSpace: "pre-line"}}>{Commnet.content}</div>
                             <div className="d-flex justify-content-end">
                                 <div className="badge bg-light text-dark p-2 text-start">
-                                    <div>{answer.createDate}</div>
+                                    <div>{Commnet.createDate}</div>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +71,7 @@ function BoardDetail() {
             })}
             <form onSubmit={onSubmit} className="my-3">
                 <textarea
-                    onChange={onChange} value={answerText}
+                    onChange={onChange} value={CommnetText}
                     name="content" id="content" rows="10" className="form-control">
                 </textarea>
                 <input type="submit" value="답변등록" className="btn btn-primary my-2" />
