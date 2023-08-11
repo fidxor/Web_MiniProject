@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 function BoardCreate() {
     const [Head, setHead] = useState("");
     const [Body, setBody] = useState("");
     const navigate = useNavigate();
+
     async function onSubmit(event) {
         event.preventDefault();
         if (Head ==="" || Body ==="") {
@@ -13,10 +15,11 @@ function BoardCreate() {
             console.log("제목: "+Head);
             console.log("내용: "+Body);
             try {
-                const result = await axios.post("http://localhost:8080/MainBoard-create/", {
+                const result = await axios.post("http://localhost:8080/main-board-create/", {
                     Head: Head,
                     Body: Body
                 })
+                console.log(result);
                 if (result.status === 200) {
                     navigate("/board");
                 }

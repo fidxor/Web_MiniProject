@@ -37,8 +37,9 @@ public class MainBoardController {
         commentRepository.save(commnet);
     }
 
-    @PostMapping(value = "/MainBoard-create")
+    @PostMapping(value = "/main-board-create")
     public void mainBoardSubmit(@RequestBody Map<String, String> map) {
+        System.out.println(map);
         MainBoard m = new MainBoard();
         m.setHead(map.get("Head"));
         m.setBody(map.get("Body"));

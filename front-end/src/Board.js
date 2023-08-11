@@ -17,7 +17,7 @@ function Board() {
     }, [])
     return(
         <div>
-            <Link className="btn btn-primary" to="/MainBoard-create">게시글등록</Link>
+            <Link className="btn btn-primary" to="/main-board-create">게시글등록</Link>
             <table className="table text-center my-3">
                 <thead className="table-dark">
                     <tr>
