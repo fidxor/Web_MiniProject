@@ -25,7 +25,7 @@ public class MainBoard {
     private String Body;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime CreatTime;
+    private LocalDateTime CreateTime;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime modifyTime;

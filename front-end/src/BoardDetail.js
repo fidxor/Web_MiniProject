@@ -1,6 +1,7 @@
 import axios from "axios" 
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+
 function BoardDetail() {
     const [MainBoard, setMainBoard] = useState([]);
     const params = useParams();
@@ -11,9 +12,9 @@ function BoardDetail() {
     useEffect(() => {
         async function getMainBoard() {
             try {
-                const result = await axios.get(`http://localhost:8080/board/${params.id}`)
+                const result = await axios.get(`http://localhost:8080/board/${MainBoard.bnum}`)
                 setMainBoard(result.data);
-                // console.log(result);
+                console.log(result);
                 setCommnet(result.data.CommnetList);
             } catch (error) {
                 console.log(error);
@@ -30,7 +31,7 @@ function BoardDetail() {
         } else {
             event.preventDefault();
             try {
-                const result = await axios.post(`http://localhost:8080/answer-create/${params.id}`,{
+                const result = await axios.post(`http://localhost:8080/answer-create/${params.bnum}`,{
                     Body: CommnetText
                 })
                 if (result.status === 200) {
@@ -43,13 +44,13 @@ function BoardDetail() {
     }
     return (
         <div>
-            <h2 className="border-bottom py-2">제목 : {MainBoard.Head}</h2>
+            <h2 className="border-bottom py-2">제목 : {MainBoard.head}</h2>
             <div className="card my-3">
                 <div className="card-body">
-                    <div className="card-text" style={{whiteSpace: "pre-line"}}>{MainBoard.Body}</div>
+                    <div className="card-text" style={{whiteSpace: "pre-line"}}>{MainBoard.body}</div>
                     <div className="d-flex justify-content-end">
                         <div className="badge bg-light text-dark p-2 text-start">
-                            <div>{MainBoard.createDate}</div>
+                            <div>{MainBoard.createTime}</div>
                         </div>
                     </div>
                 </div>
@@ -62,7 +63,7 @@ function BoardDetail() {
                             <div className="card-text" style={{whiteSpace: "pre-line"}}>{Commnet.content}</div>
                             <div className="d-flex justify-content-end">
                                 <div className="badge bg-light text-dark p-2 text-start">
-                                    <div>{Commnet.createDate}</div>
+                                    <div>{Commnet.createTime}</div>
                                 </div>
                             </div>
                         </div>

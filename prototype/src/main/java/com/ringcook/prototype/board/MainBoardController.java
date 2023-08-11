@@ -42,7 +42,7 @@ public class MainBoardController {
         MainBoard m = new MainBoard();
         m.setHead(map.get("Head"));
         m.setBody(map.get("Body"));
-        m.setCreatTime(LocalDateTime.now());
+        m.setCreateTime(LocalDateTime.now());
         mainBoardRepository.save(m);
     }
 
@@ -51,7 +51,7 @@ public class MainBoardController {
         MainBoard m = this.mainBoardRepository.getReferenceById(bnum);
         m.setHead(map.get("Head"));
         m.setBody(map.get("Body"));
-        m.setCreatTime(LocalDateTime.now());
+        m.setCreateTime(LocalDateTime.now());
         mainBoardRepository.save(m);
     }
 

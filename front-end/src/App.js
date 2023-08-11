@@ -21,8 +21,10 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />}/>
                 <Route path="/board" element={<Board />}/>
-                <Route path="/board/:id" element={<BoardDetail />}/>
+                <Route path="/board/:bnum" element={<BoardDetail />}/>
                 <Route path="/MainBoard-create" element={<BoardCreate />} />
+                <Route path="/Signup" element={<Signup />} />
+                <Route path="/Login" element={<Login />} />
               </Routes>
           </div>
       </BrowserRouter>
