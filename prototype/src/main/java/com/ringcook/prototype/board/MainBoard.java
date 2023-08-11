@@ -1,5 +1,6 @@
 package com.ringcook.prototype.board;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -26,7 +27,8 @@ public class MainBoard {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime CreatTime;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "mainBoard", cascade = CascadeType.REMOVE)
     private List<Commnet> commnetList;
 }
-//현재 localhost:8080/login -> localhost:8080/board 로 변경이 안된다.
+
