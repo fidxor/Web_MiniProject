@@ -23,6 +23,8 @@ function App() {
                 <Route path="/board" element={<Board />}/>
                 <Route path="/board/:id" element={<BoardDetail />}/>
                 <Route path="/MainBoard-create" element={<BoardCreate />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
               </Routes>
           </div>
       </BrowserRouter>

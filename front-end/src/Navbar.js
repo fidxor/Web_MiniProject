@@ -12,6 +12,12 @@ function Navbar(){
                             <li className='nav-item'>
                                 <Link className='nav-link active' aria-current = 'page' to = '/board'>Board</Link>
                             </li>
+                            <li className='nav-item'>
+                                <Link className='nav-link active' aria-current = 'page' to = '/login'>Login</Link>
+                            </li>
+                            <li className='nav-item'>
+                                <Link className='nav-link active' aria-current = 'page' to = '/signup'>Signup</Link>
+                            </li>
                         </ul>
             </div>
             </nav>
