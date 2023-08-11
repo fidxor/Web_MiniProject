@@ -31,26 +31,26 @@ public class MainBoardController {
     public void commentSubmit(@PathVariable("bnum") Integer bnum, @RequestBody Map<String, String> map) {
         MainBoard mainBoard = this.mainBoardRepository.getReferenceById(bnum);
         Commnet commnet = new Commnet();
-        commnet.setBody(map.get("body"));
+        commnet.setBody(map.get("Body"));
         commnet.setCreatTime(LocalDateTime.now());
         commnet.setMainBoard(mainBoard);
         commentRepository.save(commnet);
     }
 
-    @GetMapping(value = "/MainBoard-create")
+    @PostMapping(value = "/MainBoard-create")
     public void mainBoardSubmit(@RequestBody Map<String, String> map) {
         MainBoard m = new MainBoard();
         m.setHead(map.get("Head"));
-        m.setBody(map.get("body"));
+        m.setBody(map.get("Body"));
         m.setCreatTime(LocalDateTime.now());
         mainBoardRepository.save(m);
     }
 
-    @PutMapping(value = "/MainBoard-create/{bnum}")
+    @PutMapping(value = "/MainBoard-modify/{bnum}")
     public void mainBoardModify(@PathVariable("bnum") Integer bnum, @RequestBody Map<String, String> map) {
         MainBoard m = this.mainBoardRepository.getReferenceById(bnum);
         m.setHead(map.get("Head"));
-        m.setBody(map.get("body"));
+        m.setBody(map.get("Body"));
         m.setCreatTime(LocalDateTime.now());
         mainBoardRepository.save(m);
     }

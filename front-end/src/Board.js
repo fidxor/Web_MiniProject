@@ -7,8 +7,8 @@ function Board() {
         async function MainBoardList() {
             try {
                 const result = await axios.get("http://localhost:8080/board");
-                // console.log(result);
-                MainBoardList(result.data);
+                // console.log(result.data);
+                setMainBoardList(result.data);
             } catch (error) {
                 console.log(error);
             }
