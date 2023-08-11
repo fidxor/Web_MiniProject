@@ -27,7 +27,7 @@ function Board() {
                     </tr>
                 </thead>
                 <tbody>
-                    MainBoardList.map((MainBoard, index) => {
+                    {MainBoardList.map((MainBoard, index) => {
                         return (
                             <tr key={index}>
                                 <td>{index+1}</td>
@@ -43,7 +43,7 @@ function Board() {
                                 <td>{MainBoard.createDate}</td>
                             </tr>
                         )
-                })}
+                    })}
                 </tbody>
             </table>
         </div>
