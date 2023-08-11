@@ -1,5 +1,6 @@
 package com.ringcook.prototype.board;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,6 +24,10 @@ public class Commnet {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime CreatTime;
 
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime modifyTime;
+
+    @JsonManagedReference
     @ManyToOne
     private MainBoard mainBoard;
 }
