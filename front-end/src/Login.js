@@ -1,33 +1,49 @@
-import { useState } from 'react'
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+ 
 function Login() {
-    const [id, setId] = useState('')
-    const [pw, setPwd] = useState('')
-
-    const [IsLogin, setIsLogin] = useState(false)
-
-    function submitInfo (e) {
-        e.preventDefault();
-        if(!id) {
-            return alert('id 입력하세요')
-        }
-        else if(!pw) {
-            return alert('pw 입력하세요')
-        }
-
-        // axios 코드 추가 해야됨
+    const [inputId, setInputId] = useState('')
+    const [inputPw, setInputPw] = useState('')
+ 
+	// input data 의 변화가 있을 때마다 value 값을 변경해서 useState 해준다
+    const handleInputId = (e) => {
+        setInputId(e.target.value)
     }
-
-  return (
-    <>
-        <form onSubmit={submitInfo}>
-            <label>id</label>
-            <input id='id' value={id} onChange={(e) => setId(e.target.value)} />
-            <label id='pw'>pw</label>
-            <input type='password' value={pw} onChange={(e) => setPwd(e.target.value)} />
-        </form>
-    </>
-  )
+ 
+    const handleInputPw = (e) => {
+        setInputPw(e.target.value)
+    }
+ 
+	// login 버튼 클릭 이벤트
+    const onClickLogin = () => {
+        console.log('click login')
+    }
+ 
+	// 페이지 렌더링 후 가장 처음 호출되는 함수
+    useEffect(() => {
+        axios.get('/user_inform/login')
+        .then(res => console.log(res))
+        .catch()
+    },
+    // 페이지 호출 후 처음 한번만 호출될 수 있도록 [] 추가
+    [])
+ 
+    return(
+        <div style={{textAlign : 'center'}}>
+            <h2>Login</h2>
+            <div>
+                <label htmlFor='input_id'>ID : </label>
+                <input type='text' name='input_id' value={inputId} onChange={handleInputId} />
+            </div>
+            <div>
+                <label htmlFor='input_pw'>PW : </label>
+                <input type='password' name='input_pw' value={inputPw} onChange={handleInputPw} />
+            </div>
+            <div>
+                <button type='button' onClick={onClickLogin}>Login</button>
+            </div>
+        </div>
+    )
 }
-
+ 
 export default Login;

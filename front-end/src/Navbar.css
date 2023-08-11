@@ -1,0 +1,38 @@
+.navbar-brand {
+    font-family: 'Jua', sans-serif;
+    font-size: 40px
+}
+.navbar-brand {
+    margin-left: 20px;  /* 오른쪽으로 10픽셀 이동 */
+    margin-top: 5px;
+}
+.navbar {
+    justify-content: flex-start;  /* 이 부분 추가 */
+}
+.navbar .navbar-toggle {
+    z-index: 2000 !important;   /* 더 큰 z-index 값으로 설정 */
+    position: relative;  /* position 값을 추가 */
+}
+.sidebar-menu {
+    z-index: 1500 !important;
+    position: fixed;
+    top: 500;  /* 이걸 그냥 내려버려서 햄버거 메뉴 아래로 옮기기 해결*/
+    left: -250px;   /* 초기 위치를 왼쪽으로 변경 */
+    width: 130px;
+    height: 100%;
+    background: #212529;
+    overflow-y: auto;
+    transition: left 0.3s;  /* right 대신 left 속성을 애니메이션으로 */
+}
+.sidebar-menu.open {
+    left: 0;   /* 왼쪽에서 슬라이드를 위해 0으로 설정 */
+}
+.navbar-dark .sidebar-menu .nav-link {
+    color: rgba(255,255,255,.5);
+}
+.navbar-dark .sidebar-menu .nav-link:hover, .navbar-dark .sidebar-menu .nav-link:focus {
+    color: rgba(255,255,255,.75);
+}
+.navbar-dark .sidebar-menu .navbar-nav .nav-link.active, .navbar-dark .sidebar-menu .navbar-nav .show > .nav-link {
+    color: #fff;
+}
