@@ -14,12 +14,17 @@ public class BoardRepositoryTest {
     @Autowired
     private MainBoardRepository mainBoardRepository;
 
+
+
+
     @Test
     void test_1() {
         MainBoard q1 = new MainBoard();
-        q1.setHead("백종원의 레서피");
-        q1.setBody("참치김치찌개");
-        q1.setCreatTime(LocalDateTime.now());
+        q1.setSubject("백종원의 레서피");
+        q1.setContent("참치김치찌개");
+        q1.setCreatetime(LocalDateTime.now());
         this.mainBoardRepository.save(q1);
     }
+
+
 }

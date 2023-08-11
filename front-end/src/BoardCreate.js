@@ -21,6 +21,7 @@ function BoardCreate() {
                     navigate("/board");
                 }
             } catch (error) {
+                console.log(error);
                 alert("서버에 문제가 있어서 질문 등록이 안됩니다.");
             }
         }

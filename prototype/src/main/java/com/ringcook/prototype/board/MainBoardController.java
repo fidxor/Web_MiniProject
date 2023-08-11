@@ -22,15 +22,15 @@ public class MainBoardController {
         return mainBoardRepository.findAll();
     }
 
-    @GetMapping(value = "/board/{bnum}")
-    public Optional<MainBoard> detail(@PathVariable("bnum") Integer bnum) {
-        return mainBoardRepository.findById(bnum);
+    @GetMapping(value = "/board/{id}")
+    public Optional<MainBoard> detail(@PathVariable("id") Integer id) {
+        return mainBoardRepository.findById(id);
     }
 
     @GetMapping(value = "/comment-create/{bnum}")
     public void commentSubmit(@PathVariable("bnum") Integer bnum, @RequestBody Map<String, String> map) {
         MainBoard mainBoard = this.mainBoardRepository.getReferenceById(bnum);
-        Commnet commnet = new Commnet();
+        Comment commnet = new Comment();
         commnet.setBody(map.get("Body"));
         commnet.setCreatTime(LocalDateTime.now());
         commnet.setMainBoard(mainBoard);
@@ -40,18 +40,18 @@ public class MainBoardController {
     @PostMapping(value = "/MainBoard-create")
     public void mainBoardSubmit(@RequestBody Map<String, String> map) {
         MainBoard m = new MainBoard();
-        m.setHead(map.get("Head"));
-        m.setBody(map.get("Body"));
-        m.setCreatTime(LocalDateTime.now());
+        m.setSubject(map.get("subject"));
+        m.setContent(map.get("content"));
+        m.setCreatetime(LocalDateTime.now());
         mainBoardRepository.save(m);
     }
 
     @PutMapping(value = "/MainBoard-modify/{bnum}")
     public void mainBoardModify(@PathVariable("bnum") Integer bnum, @RequestBody Map<String, String> map) {
         MainBoard m = this.mainBoardRepository.getReferenceById(bnum);
-        m.setHead(map.get("Head"));
-        m.setBody(map.get("Body"));
-        m.setCreatTime(LocalDateTime.now());
+        m.setSubject(map.get("Head"));
+        m.setContent(map.get("Body"));
+        m.setCreatetime(LocalDateTime.now());
         mainBoardRepository.save(m);
     }
 
