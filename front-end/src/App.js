@@ -21,10 +21,10 @@ function App() {
               <Routes>
                 <Route path="/" element={<Home />}/>
                 <Route path="/board" element={<Board />}/>
-                <Route path="/board/:bnum" element={<BoardDetail />}/>
-                <Route path="/main-board-create" element={<BoardCreate />} />
-                <Route path="/Signup" element={<Signup />} />
-                <Route path="/Login" element={<Login />} />
+                <Route path="/board/:id" element={<BoardDetail />}/>
+                <Route path="/MainBoard-create" element={<BoardCreate />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
               </Routes>
           </div>
       </BrowserRouter>
