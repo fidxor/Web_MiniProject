@@ -22,15 +22,14 @@ public class MainBoardController {
         return mainBoardRepository.findAll();
     }
 
-    @GetMapping(value = "/board/{id}")
-    public Optional<MainBoard> detail(@PathVariable("id") Integer id) {
-        return mainBoardRepository.findById(id);
+    @GetMapping(value = "/board/{bnum}")
+    public Optional<MainBoard> detail(@PathVariable("bnum") Integer bnum) {
+        return mainBoardRepository.findById(bnum);
     }
 
-    @GetMapping(value = "/comment-create/{id}")
-    public void commentSubmit(@PathVariable{"id"} Integer id, @RequestBody
-    Map<String, String> map) {
-        MainBoard mainBoard = this.mainBoardRepository.getReferenceById(id);
+    @GetMapping(value = "/comment-create/{bnum}")
+    public void commentSubmit(@PathVariable("bnum") Integer bnum, @RequestBody Map<String, String> map) {
+        MainBoard mainBoard = this.mainBoardRepository.getReferenceById(bnum);
         Commnet commnet = new Commnet();
         commnet.setBody(map.get("body"));
         commnet.setCreatTime(LocalDateTime.now());
@@ -44,22 +43,21 @@ public class MainBoardController {
         m.setHead(map.get("Head"));
         m.setBody(map.get("body"));
         m.setCreatTime(LocalDateTime.now());
-        mainBoardRepository.save(commnet);
+        mainBoardRepository.save(m);
     }
 
-    @PutMapping(value = "/MainBoard-create/{id}")
-    public void mainBoardModify(@PathVariable{"id"} Integer id,
-    @RequestBody Map<String, String> map) {
-        MainBoard m = this.mainBoardRepository.getReferenceById(id);
+    @PutMapping(value = "/MainBoard-create/{bnum}")
+    public void mainBoardModify(@PathVariable("bnum") Integer bnum, @RequestBody Map<String, String> map) {
+        MainBoard m = this.mainBoardRepository.getReferenceById(bnum);
         m.setHead(map.get("Head"));
         m.setBody(map.get("body"));
         m.setCreatTime(LocalDateTime.now());
         mainBoardRepository.save(m);
     }
 
-    @DeleteMapping(value = "/MainBoard-delete/{id}")
-    public String mainBoardDelete(@PathVariable("id") Integer id) {
-        Optional<MainBoard> mainBoard = this.mainBoardRepository.findById(id);
+    @DeleteMapping(value = "/MainBoard-delete/{bnum}")
+    public String mainBoardDelete(@PathVariable("bnum") Integer bnum) {
+        Optional<MainBoard> mainBoard = this.mainBoardRepository.findById(bnum);
         if (mainBoard.isPresent()) {
             MainBoard m = mainBoard.get();
             mainBoardRepository.delete(m);
