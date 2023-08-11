@@ -28,7 +28,7 @@ function BoardCreate() {
     function onChange(event) {
         if (event.target.name === "Head") {
             setHead(event.target.value);
-        } else if (event.target.name === "content") {
+        } else if (event.target.name === "Body") {
             setBody(event.target.value);
         }
     }
