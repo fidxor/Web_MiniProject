@@ -8,7 +8,7 @@ function BoardCreate() {
     async function onSubmit(event) {
         event.preventDefault();
         if (subject ==="" || content ==="") {
-            alert("글 등록하시려면, 제목과 내용은 무조건 입력해야 합니다!!")
+            alert("글 등록하시려면, 제목과 내용을 입력해야 합니다!!")
         } else {
             console.log("제목: "+subject);
             console.log("내용: "+content);
