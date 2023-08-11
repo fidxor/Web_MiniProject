@@ -41,18 +41,18 @@ public class MainBoardController {
     public void mainBoardSubmit(@RequestBody Map<String, String> map) {
         System.out.println(map);
         MainBoard m = new MainBoard();
-        m.setHead(map.get("Head"));
-        m.setBody(map.get("Body"));
-        m.setCreateTime(LocalDateTime.now());
+        m.setSubject(map.get("subject"));
+        m.setContent(map.get("content"));
+        m.setCreatetime(LocalDateTime.now());
         mainBoardRepository.save(m);
     }
 
-    @PutMapping(value = "/MainBoard-modify/{bnum}")
-    public void mainBoardModify(@PathVariable("bnum") Integer bnum, @RequestBody Map<String, String> map) {
-        MainBoard m = this.mainBoardRepository.getReferenceById(bnum);
-        m.setHead(map.get("Head"));
-        m.setBody(map.get("Body"));
-        m.setCreateTime(LocalDateTime.now());
+    @PutMapping(value = "/MainBoard-modify/{id}")
+    public void mainBoardModify(@PathVariable("id") Integer id, @RequestBody Map<String, String> map) {
+        MainBoard m = this.mainBoardRepository.getReferenceById(id);
+        m.setSubject(map.get("subject"));
+        m.setContent(map.get("content"));
+        m.setCreatetime(LocalDateTime.now());
         mainBoardRepository.save(m);
     }
 
