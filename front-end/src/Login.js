@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useNavigate } from 'react';
 import axios from 'axios';
- 
+
 function Login() {
     const [inputId, setInputId] = useState('')
     const [inputPw, setInputPw] = useState('')
+    // const navigate = useNavigate();
+    
 
 	// input data 의 변화가 있을 때마다 value 값을 변경해서 useState 해준다
     const handleInputId = (e) => {
@@ -16,20 +18,24 @@ function Login() {
  
 	// login 버튼 클릭 이벤트
     const onClickLogin = (e) => {
-        e.preventDefault()
-        axios({
-            method: 'post',
-            url: 'localhost:8080/login',
-            data: {
-                id : inputId,
-                password : inputPw,
-            },
-        })
-        .then((res) => {
-            console.log(res)
-        })
-        // dispatch(loginUser(body))
-    }
+        axios
+          .post("http://localhost:8080/auth/login", {
+            // 임시 하드코딩 서버랑 연동해서 변수로 바꿀 예정
+            'userid': "usertest",
+            'password': "usertest1",
+          })
+          .then((res) => {
+            if (res.data.accessToken) {
+                console.log(res.data.accessToken)
+            //token setting
+            //redirec code
+            }
+          })
+          .catch((error) => {
+            console.log(error, "error");
+          });
+      };
+
     return(
         <div style={{textAlign : 'center'}}>
             <h2>Login</h2>
